@@ -7,7 +7,7 @@
 - Reads CSV files with a configurable delimiter
 - Shows row count, columns, and file size
 - Calculates value counts for a selected column
-- Sends the first rows of the dataset to Gemini for a text summary
+- Sends the first rows of the dataset to Groq for a text summary
 
 ## Project Structure
 
@@ -26,7 +26,7 @@ csv_parser/
 ## Requirements
 
 - Python 3.10+
-- A Gemini API key stored in an environment variable
+- A Groq API key stored in an environment variable
 
 ## Installation
 
@@ -40,7 +40,9 @@ pip install -r csv_parser/requirements.txt
 Create a `.env` file in the `csv_parser` folder and add:
 
 ```env
-GEMINI_API_KEY=your_api_key_here
+GROQ_API_KEY=your_api_key_here
+# Optional:
+GROQ_MODEL=llama-3.3-70b-versatile
 ```
 
 ## Run
@@ -54,7 +56,7 @@ python -m csv_parser.main path/to/file.csv --column city
 Useful options:
 
 - `--delimiter ";"` for custom CSV delimiters
-- `--limit 10` to change how many rows are sent to Gemini
+- `--limit 10` to change how many rows are sent to Groq
 
 ### Main Examples
 
@@ -70,7 +72,7 @@ Run with a semicolon-separated CSV:
 python -m csv_parser.main data.csv --column city --delimiter ";"
 ```
 
-Run with a different row limit for Gemini:
+Run with a different row limit for Groq:
 
 ```bash
 python -m csv_parser.main reports/sales.csv --column region --limit 10
@@ -87,7 +89,7 @@ python -m csv_parser.main reports/sales.csv --column region --delimiter ";" --li
 1. Start the program with `python -m csv_parser.main data.csv --column city`
 2. Review the row count, columns, and value counts in the terminal
 3. Review logs in `csv_reader.log`
-4. Review the AI summary in `gemini_analysis_response.txt`
+4. Review the AI summary in `groq_analysis_response.txt`
 
 ## Tests
 
@@ -126,4 +128,4 @@ python -m pytest csv_parser/tests -k analyzer
 ## Notes
 
 - Do not commit real API keys to the repository.
-- Gemini summary generation requires `GEMINI_API_KEY`, but CSV parsing and analysis logic are testable separately.
+- Groq summary generation requires `GROQ_API_KEY`, but CSV parsing and analysis logic are testable separately.

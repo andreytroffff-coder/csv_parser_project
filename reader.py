@@ -4,7 +4,6 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-
 def read_csv(file_path: str | Path, delimiter: str = ",") -> list[dict[str, str]]:
     """Read a CSV file and return rows as dictionaries."""
     try:

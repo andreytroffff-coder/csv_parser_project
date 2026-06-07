@@ -48,12 +48,16 @@ def main() -> int:
     data = read_csv(args.file_path, args.delimiter)[:args.limit]
     content = generate_content(DEFAULT_PROMPT, data)
     if content is None:
-        print("Gemini summary was not generated. Check logs for details.")
+        print("AI summary was not generated. Check logs for details.")
         return 1
 
-    print("Gemini summary saved to gemini_analysis_response.txt")
+    print("AI summary saved to groq_analysis_response.txt")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+#example usage:
+# python -m csv_parser.main .\exam_results.csv  --column score --delimiter ',' 
+# python -m csv_parser.main .\exam_results.csv  --column score --delimiter ',' --limit 10
