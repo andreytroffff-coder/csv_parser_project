@@ -56,7 +56,7 @@ def generate_content(prompt: str = DEFAULT_PROMPT, data=None) -> str | None:
         )
         content = response.choices[0].message.content
 
-        with open("groq_analysis_response.txt", "w", encoding="utf-8") as file:
+        with open("csv_parser/groq_analysis_response.txt", "w", encoding="utf-8") as file:
             file.write(content)
             logger.info("Response saved to groq_analysis_response.txt")
 
